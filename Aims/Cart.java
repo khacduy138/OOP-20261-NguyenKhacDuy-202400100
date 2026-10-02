@@ -1,4 +1,6 @@
 package com.hust.kstn;
+import java.util.*;
+
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -46,7 +48,7 @@ public class Cart {
         }
         return total;
     }
-    public void print() {
+    public void printCart() {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
         
@@ -55,9 +57,15 @@ public class Cart {
             System.out.println((i + 1) + ". DVD - " + itemsInCart[i].getTitle() + ": " + itemsInCart[i].getCost() + " $");
         }
         
-        // In ra tổng chi phí
-        System.out.println("Total cost: " + calculateTotalCost() + " $");
-        
         System.out.println("***************************************************");
+    }
+    public void printCost() {
+        System.out.println("Total cost: " + calculateTotalCost() + " $");
+    }
+    
+    public void sortByTitle() {
+        Arrays.sort(itemsInCart, 0, qtyOrdered, 
+            Comparator.comparing(DigitalVideoDisc::getTitle, String.CASE_INSENSITIVE_ORDER)
+        );
     }
 }
