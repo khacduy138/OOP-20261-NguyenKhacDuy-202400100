@@ -1,0 +1,11 @@
+**Question: String, StringBuffer and StringBuilder**
+
+`String` is immutable, so concatenating strings repeatedly may create many intermediate objects. `StringBuffer` and `StringBuilder` are mutable classes that allow strings to be modified without creating a new string for every append operation.
+
+**Observation: GarbageCreator vs. NoGarbage**
+
+`GarbageCreator` uses the `+` operator to concatenate file contents in a loop. This may create many intermediate string objects and increase memory consumption and execution time.
+
+`NoGarbage` uses `StringBuffer.append()` to accumulate the file contents. This reduces unnecessary intermediate string creation and generally improves performance.
+
+`StringBuffer` is synchronized, while `StringBuilder` is not. `StringBuilder` is generally preferred for single-threaded string construction.
